@@ -48,7 +48,17 @@ public class Operation {
         Map<String, List<Engineer>> departmentWiseName = engineers.stream().collect(Collectors.groupingBy(Engineer::getDepartment));
         departmentWiseName.forEach((k,v) -> System.out.println(k + " = " + v));
 
+        //10. Max age of engineer
 
+        Engineer engineerWithMaxAge = engineers.stream().max(Comparator.comparingInt(Engineer::getAge)).get();
+        int asInt = engineers.stream().mapToInt(Engineer::getAge).max().getAsInt();
+        System.out.println(engineerWithMaxAge);
+        System.out.println(asInt);
+
+        //11. Find all engineers name and add comma while printing
+        List<String> empNames = engineers.stream().map(Engineer::getName).collect(Collectors.toList());
+        String empList = String.join(",", empNames);
+        System.out.println(empList);
     }
 }
 
