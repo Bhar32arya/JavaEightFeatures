@@ -3,6 +3,7 @@ package org.example;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class Operation {
@@ -59,7 +60,12 @@ public class Operation {
         List<String> empNames = engineers.stream().map(Engineer::getName).collect(Collectors.toList());
         String empList = String.join(",", empNames);
         System.out.println(empList);
+
+        //12. Find Department wise maximum salary of engineer
+        Map<String, Engineer> departmentWiseMaxSal = engineers.stream().collect(Collectors.groupingBy(Engineer::getDepartment, Collectors.collectingAndThen(Collectors.maxBy(Comparator.comparingDouble(Engineer::getSalary)), Optional::get)));
+        departmentWiseMaxSal.forEach((k,v) -> System.out.println(k + " = " + v));
     }
+
 }
 
 
