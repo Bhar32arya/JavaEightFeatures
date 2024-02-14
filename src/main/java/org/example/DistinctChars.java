@@ -2,7 +2,7 @@ package org.example;
 
 import java.util.stream.Collectors;
 
-public class DistintChars {
+public class DistinctChars {
     public static void main(String[] args) {
         String str = "Hello java check for distinct characters";
 
