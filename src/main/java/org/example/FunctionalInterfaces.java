@@ -31,5 +31,9 @@ public class FunctionalInterfaces {
         Supplier<Integer> randomNumber = () -> new Random().nextInt();
 
         System.out.println(randomNumber.get());
+
+        Function<String, Integer> convertToString = num -> Integer.parseInt(num);
+
+        System.out.println(convertToString.apply("550"));
     }
 }
