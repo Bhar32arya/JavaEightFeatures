@@ -1,7 +1,6 @@
 package org.example;
 
 import java.util.*;
-import java.util.function.Function;
 import java.util.stream.Collectors;
 
 public class IntegerFrequency {
@@ -11,7 +10,7 @@ public class IntegerFrequency {
         Map<Integer, Integer> map = new LinkedHashMap<>();
 
         for(int key : arr) {
-            if(map.containsKey(map.get(key))) {
+            if(map.containsKey(key)) {
                 map.put(key, map.get(key) + 1);
             } else {
                 map.put(key, 1);
