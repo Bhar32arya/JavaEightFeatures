@@ -25,6 +25,8 @@ public class Operation {
 
         //4. Find all departments name
         List<String> departments = engineers.stream().map(e -> e.getDepartment()).distinct().collect(Collectors.toList());
+        Map<String, List<Engineer>> listMap = engineers.stream().collect(Collectors.groupingBy(Engineer::getDepartment));
+
         departments.forEach(System.out::println);
 
         //5. Find average salary of male and female engineer

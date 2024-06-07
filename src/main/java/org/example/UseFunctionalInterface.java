@@ -5,7 +5,6 @@ import java.util.*;
 interface Calculator {
     int calculate(int a, int b);
     default void exception() {
-
     }
 }
 public class UseFunctionalInterface {

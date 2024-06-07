@@ -1,13 +1,33 @@
 package org.example;
 
 import java.util.*;
+import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
 public class CharacterFrequency {
     public static void main(String[] args) {
         String str = "java concept of the day";
-        Map<Character, Long> frequencyOfChar = str.chars()
+
+        Map<Character, Integer> charFreq = new HashMap<>();
+        for(char c : str.toCharArray()) {
+            if(charFreq.containsKey(c)) {
+                charFreq.put(c, charFreq.get(c) + 1);
+            } else {
+                charFreq.put(c, 1);
+            }
+        }
+        Consumer<Map<Character, Integer>> printMap = map -> map.forEach((k, v) -> {
+            if(k != ' ') {
+                System.out.println(k + " * " + v);
+            }
+        });
+
+        printMap.accept(charFreq);
+
+        System.out.println();
+
+            Map<Character, Long> frequencyOfChar = str.chars()
                 .mapToObj(c -> (char) c)
                 .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
 

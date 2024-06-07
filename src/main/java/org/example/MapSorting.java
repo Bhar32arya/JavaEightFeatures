@@ -8,13 +8,14 @@ import java.util.stream.Collectors;
 public class MapSorting {
 
     public static void main(String[] args) {
-        String str = "My name is bhartendu kumar";
+        String str = "My name is Bhartendu Kumar";
 
         Map<Character, Long> characterLongMap = str.chars()
                 .mapToObj(c -> (char) c)
                 .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
 
-        Map<Character, Long> sortedMap = characterLongMap.entrySet()
+        Map<Character, Long> sortedMap = characterLongMap
+                .entrySet()
                 .stream()
                 .sorted((a, b) -> b.getValue().compareTo(a.getValue()))
                 .collect(Collectors.toMap(
